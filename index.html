@@ -7,35 +7,39 @@
   <meta name="description" content="Hyeon Hwang — AI Researcher. Ph.D student at Korea University working on large language models for biomedical and scientific domains.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #ffffff;
-      --card: #ffffff;
-      --text: #23272f;
-      --muted: #5b6472;
-      --faint: #8b93a1;
-      --accent: #1d4ed8;
-      --accent-strong: #1e40af;
-      --accent-soft: #eff4ff;
-      --line: #e7eaf0;
-      --chip-bg: #f3f5f8;
-      --chip-border: #dfe3ea;
+      --bg: #faf7f1;
+      --bg-deep: #f3eee4;
+      --card: #fffdf9;
+      --text: #232019;
+      --muted: #6b655a;
+      --faint: #98917f;
+      --accent: #175e54;        /* deep pine green */
+      --accent-ink: #0e4a42;
+      --accent-soft: #e4efe9;
+      --amber: #b45309;
+      --amber-soft: #f6ead8;
+      --line: #e6dfd1;
+      --shadow: #d9d0bd;
       color-scheme: light dark;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #14161a;
-        --card: #14161a;
-        --text: #e8eaee;
-        --muted: #a6adba;
-        --faint: #767e8c;
-        --accent: #7ea2ff;
-        --accent-strong: #a5bdff;
-        --accent-soft: #1d2536;
-        --line: #2a2e36;
-        --chip-bg: #1e2229;
-        --chip-border: #333842;
+        --bg: #191713;
+        --bg-deep: #14120f;
+        --card: #201d18;
+        --text: #ece7dc;
+        --muted: #aca596;
+        --faint: #7d766a;
+        --accent: #6fc9b6;
+        --accent-ink: #93d9c9;
+        --accent-soft: #1d2a26;
+        --amber: #e3a35f;
+        --amber-soft: #322718;
+        --line: #35302a;
+        --shadow: #0d0c0a;
       }
     }
     * { box-sizing: border-box; }
@@ -46,153 +50,236 @@
       color: var(--text);
       font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 15.5px;
-      line-height: 1.65;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; text-underline-offset: 3px; }
-    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px 90px; }
+    .serif { font-family: "Fraunces", Georgia, serif; }
+    .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 0 26px 100px; }
 
     /* ---------- Hero ---------- */
-    .hero { text-align: center; padding: 72px 0 8px; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 36px;
+      align-items: center;
+      padding: 84px 0 56px;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero h1 {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 52px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.08;
+      margin: 0 0 10px;
+    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero .tagline { color: var(--muted); margin: 0 0 22px; font-size: 16.5px; }
+    .hero .links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+    .hero .links a {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 13px; font-weight: 500;
+      color: var(--text);
+      border-bottom: 1.5px solid var(--amber);
+      padding-bottom: 1px;
+    }
+    .hero .links a:hover { color: var(--amber); text-decoration: none; }
     .avatar {
-      width: 128px; height: 128px; border-radius: 50%;
-      margin: 0 auto 20px;
+      width: 148px; height: 148px;
+      border-radius: 14px;
+      transform: rotate(2deg);
       background: var(--accent-soft); color: var(--accent);
       display: flex; align-items: center; justify-content: center;
-      font-size: 40px; font-weight: 800; overflow: hidden;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 44px; font-weight: 700;
+      overflow: hidden;
       border: 1px solid var(--line);
+      box-shadow: 6px 6px 0 var(--shadow);
     }
     .avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .hero h1 { font-size: 36px; font-weight: 800; letter-spacing: -0.01em; margin: 0 0 6px; }
-    .hero .tagline { color: var(--muted); margin: 0 0 18px; font-size: 16px; }
-    .hero .links { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
-    .hero .links a {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 7px 16px; border: 1px solid var(--chip-border); border-radius: 999px;
-      font-size: 14px; font-weight: 600; color: var(--text); background: var(--card);
-    }
-    .hero .links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
 
     /* ---------- Section headings ---------- */
-    section { margin-top: 84px; }
-    h2 {
-      text-align: center;
-      font-size: 21px; font-weight: 800;
-      letter-spacing: 0.32em; text-transform: uppercase;
-      color: var(--accent-strong);
-      margin: 0 0 44px;
+    section { margin-top: 76px; }
+    .sec-head {
+      display: flex; align-items: baseline; gap: 14px;
+      margin-bottom: 34px;
     }
-    h2 span { display: inline-block; padding: 0 4px 10px; border-bottom: 2px solid var(--accent); }
-
-    .about p { max-width: 720px; margin: 0 auto 14px; text-align: left; }
-
-    /* ---------- News timeline ---------- */
-    .news { max-width: 680px; margin: 0 auto; position: relative; padding-left: 18px; }
-    .news::before {
-      content: ""; position: absolute; left: 4px; top: 8px; bottom: 8px;
-      width: 2px; background: var(--line); border-radius: 2px;
+    .sec-head .num {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 13px; color: var(--amber); font-weight: 500;
+      letter-spacing: 0.05em;
     }
+    .sec-head h2 {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 27px; font-weight: 600; font-style: italic;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+    .sec-head::after {
+      content: ""; flex: 1; height: 1px;
+      background: var(--line); align-self: center;
+    }
+
+    .about p { margin: 0 0 14px; max-width: 700px; }
+
+    /* ---------- News ---------- */
     .news-item {
-      display: grid; grid-template-columns: 96px 1fr; gap: 18px;
-      align-items: baseline; position: relative;
-      padding: 10px 0 10px 20px;
+      display: grid; grid-template-columns: 92px 1fr;
+      gap: 22px; align-items: baseline;
+      padding: 11px 0;
+      border-bottom: 1px dashed var(--line);
     }
-    .news-item::before {
-      content: ""; position: absolute; left: -18px; top: 19px;
-      width: 9px; height: 9px; border-radius: 50%;
-      background: var(--accent); transform: translateX(-0.5px);
+    .news-item:last-of-type { border-bottom: none; }
+    .news-item .date {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 12px; font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border-radius: 4px;
+      padding: 1px 8px;
+      text-align: center;
+      white-space: nowrap;
+      align-self: center;
     }
-    .news-item .date { color: var(--muted); font-size: 14px; white-space: nowrap; }
-    .news-item .what { font-size: 15px; }
-    .news-item .what .ico { margin-right: 8px; }
     .news-item.old { display: none; }
     .news.expanded .news-item.old { display: grid; }
     .btn-ghost {
-      display: block; margin: 22px auto 0;
-      padding: 8px 22px; border-radius: 999px;
-      border: 1px solid var(--chip-border); background: var(--card);
-      color: var(--muted); font-size: 14px; font-weight: 600;
-      font-family: inherit; cursor: pointer;
+      display: block; margin: 26px 0 0;
+      padding: 8px 20px; border-radius: 6px;
+      border: 1px solid var(--line); background: var(--card);
+      color: var(--muted); font-size: 13.5px; font-weight: 600;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 var(--shadow);
     }
-    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-ghost:hover { color: var(--accent); border-color: var(--accent); }
+    .btn-ghost:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--shadow); }
 
     /* ---------- Publications ---------- */
-    .pub-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 42px; }
+    .pub-tabs {
+      display: inline-flex; gap: 0;
+      margin-bottom: 38px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--card);
+      box-shadow: 3px 3px 0 var(--shadow);
+    }
     .pub-tabs button {
-      padding: 8px 26px; border-radius: 999px; font-size: 14.5px; font-weight: 600;
-      border: 1px solid var(--chip-border); background: var(--card); color: var(--muted);
-      font-family: inherit; cursor: pointer;
+      padding: 8px 26px;
+      font-size: 14px; font-weight: 600;
+      font-family: inherit;
+      border: none; background: transparent; color: var(--muted);
+      cursor: pointer;
     }
-    .pub-tabs button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-    @media (prefers-color-scheme: dark) { .pub-tabs button.active { color: #10131c; } }
+    .pub-tabs button + button { border-left: 1px solid var(--line); }
+    .pub-tabs button.active { background: var(--accent); color: #fdfdfa; }
 
-    .pub {
-      display: grid; grid-template-columns: 170px 1fr; gap: 24px;
-      padding: 26px 0; border-bottom: 1px solid var(--line);
-    }
-    .pub:first-of-type { border-top: 1px solid var(--line); }
     .pubs[data-mode="selected"] .pub:not(.sel) { display: none; }
-
+    .pub {
+      display: grid; grid-template-columns: 168px 1fr;
+      gap: 26px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow: 4px 4px 0 var(--shadow);
+    }
     .thumb {
-      width: 170px; height: 110px; border-radius: 8px;
-      border: 1px solid var(--line); overflow: hidden;
-      background: var(--accent-soft);
+      width: 168px; height: 112px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background: var(--bg-deep);
       display: flex; align-items: center; justify-content: center;
-      color: var(--accent); font-weight: 700; font-size: 13px;
-      letter-spacing: 0.06em; text-align: center; padding: 6px;
+      color: var(--faint);
+      font-family: "Fraunces", Georgia, serif;
+      font-style: italic; font-weight: 600; font-size: 14px;
+      text-align: center; padding: 8px;
     }
     .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: none; }
     .thumb.hasimg img { display: block; }
     .thumb.hasimg .ph { display: none; }
 
-    .pub .ptitle { font-weight: 700; font-size: 16.5px; line-height: 1.45; margin-bottom: 5px; }
-    .pub .authors { color: var(--muted); font-size: 14px; margin-bottom: 3px; }
+    .pub .ptitle {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 600; font-size: 17.5px; line-height: 1.4;
+      margin-bottom: 6px; letter-spacing: -0.005em;
+    }
+    .pub .authors { color: var(--muted); font-size: 13.5px; margin-bottom: 2px; }
     .pub .authors b { color: var(--text); font-weight: 600; }
     .pub .authors .eq { font-style: italic; color: var(--faint); }
-    .pub .venue { color: var(--muted); font-size: 13.5px; margin-bottom: 10px; }
+    .pub .venue { color: var(--muted); font-size: 13.5px; margin-bottom: 12px; }
+    .pub .venue .hl { color: var(--amber); font-weight: 600; }
     .pub .chips { display: flex; flex-wrap: wrap; gap: 8px; }
     .chip {
       display: inline-flex; align-items: center; gap: 5px;
-      font-size: 12.5px; font-weight: 600;
-      padding: 3px 11px; border-radius: 6px;
-      border: 1px solid var(--chip-border); background: var(--chip-bg); color: var(--muted);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 11.5px; font-weight: 500;
+      padding: 3px 10px; border-radius: 4px;
+      border: 1px solid var(--line); color: var(--muted); background: var(--bg);
     }
-    a.chip { color: var(--accent); background: var(--card); }
+    a.chip { color: var(--accent-ink); border-color: var(--accent-soft); background: var(--accent-soft); }
     a.chip:hover { border-color: var(--accent); text-decoration: none; }
-    .chip.kind { background: var(--accent-soft); border-color: transparent; color: var(--accent-strong); }
+    .chip.kind { background: var(--amber-soft); border-color: transparent; color: var(--amber); }
 
-    /* ---------- Simple rows (experience / education / activities) ---------- */
-    .rows { max-width: 720px; margin: 0 auto; }
-    .row { display: flex; gap: 16px; justify-content: space-between; margin-bottom: 20px; }
-    .row .title { font-weight: 700; }
+    /* ---------- Rows (experience / education / activities) ---------- */
+    .row {
+      display: flex; gap: 18px; justify-content: space-between;
+      padding: 16px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .row:last-of-type { border-bottom: none; }
+    .row .title { font-weight: 700; font-size: 15.5px; }
     .row .sub { color: var(--muted); font-size: 14px; }
-    .row .date { color: var(--faint); font-size: 13.5px; white-space: nowrap; padding-top: 2px; flex-shrink: 0; }
+    .row .date {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      color: var(--faint); font-size: 12.5px;
+      white-space: nowrap; padding-top: 4px; flex-shrink: 0;
+    }
 
     /* ---------- Awards ---------- */
-    .awards { max-width: 720px; margin: 0 auto; }
-    .award { display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start; }
+    .award {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .award:last-of-type { border-bottom: none; }
     .medal {
-      flex-shrink: 0; font-size: 12.5px; font-weight: 700;
-      color: var(--accent-strong); background: var(--accent-soft);
-      border-radius: 999px; padding: 3px 12px; margin-top: 2px; white-space: nowrap;
+      flex-shrink: 0;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 11.5px; font-weight: 500;
+      color: var(--amber); background: var(--amber-soft);
+      border-radius: 4px; padding: 3px 10px; margin-top: 3px;
+      white-space: nowrap;
     }
     .award .atitle { font-weight: 700; }
     .award .adesc { color: var(--muted); font-size: 14px; }
-    .award .ayear { color: var(--faint); font-size: 13.5px; margin-left: auto; padding-top: 3px; flex-shrink: 0; }
-
-    footer {
-      margin-top: 90px; padding-top: 22px; border-top: 1px solid var(--line);
-      color: var(--faint); font-size: 13px; text-align: center;
+    .award .ayear {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      color: var(--faint); font-size: 12.5px;
+      margin-left: auto; padding-top: 5px; flex-shrink: 0;
     }
 
-    @media (max-width: 620px) {
-      .hero { padding-top: 52px; }
-      .hero h1 { font-size: 30px; }
-      h2 { letter-spacing: 0.2em; }
+    footer {
+      margin-top: 96px; padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--faint); font-size: 13px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    }
+
+    @media (max-width: 640px) {
+      .hero { grid-template-columns: 1fr; padding-top: 56px; gap: 26px; }
+      .avatar { order: -1; width: 110px; height: 110px; font-size: 34px; }
+      .hero h1 { font-size: 38px; }
       .pub { grid-template-columns: 1fr; gap: 14px; }
-      .thumb { width: 100%; height: 140px; }
-      .news-item { grid-template-columns: 1fr; gap: 2px; }
+      .thumb { width: 100%; height: 150px; }
+      .news-item { grid-template-columns: 1fr; gap: 4px; }
+      .news-item .date { justify-self: start; }
       .row { flex-direction: column; gap: 2px; }
       .row .date { padding-top: 0; }
       .award { flex-wrap: wrap; }
@@ -205,22 +292,24 @@
 
   <!-- ================= HERO ================= -->
   <header class="hero">
-    <!-- To use a photo: put photo.jpg next to index.html — it will replace the initials automatically. -->
-    <div class="avatar" id="avatar"><span>HH</span><img src="photo.jpg" alt="Hyeon Hwang"
+    <div>
+      <h1>Hyeon <em>Hwang</em></h1>
+      <p class="tagline">AI Researcher · Ph.D Student @ Korea University, DMIS Lab</p>
+      <nav class="links">
+        <a href="mailto:hyeon-hwang@korea.ac.kr">email</a>
+        <a href="https://github.com/Hyeoni-Hwang">github</a>
+        <a href="https://scholar.google.com/citations?user=t1kz54QAAAAJ&amp;hl=ko">scholar</a>
+        <a href="Hyeon_Hwang_CV.pdf">cv.pdf</a>
+      </nav>
+    </div>
+    <!-- To use a photo: put photo.jpg next to index.html — it replaces the initials automatically. -->
+    <div class="avatar"><span>HH</span><img src="photo.jpg" alt="Hyeon Hwang"
          onload="this.parentElement.replaceChildren(this); this.style.display='block'" onerror="this.remove()"></div>
-    <h1>Hyeon Hwang</h1>
-    <p class="tagline">AI Researcher · Ph.D Student @ Korea University</p>
-    <nav class="links">
-      <a href="mailto:hyeon-hwang@korea.ac.kr">✉️ Email</a>
-      <a href="https://github.com/Hyeoni-Hwang">💻 GitHub</a>
-      <a href="https://scholar.google.com/citations?user=t1kz54QAAAAJ&amp;hl=ko">🎓 Google Scholar</a>
-      <a href="Hyeon_Hwang_CV.pdf">📄 CV</a>
-    </nav>
   </header>
 
   <!-- ================= ABOUT ================= -->
   <section class="about">
-    <h2><span>About</span></h2>
+    <div class="sec-head"><span class="num">01</span><h2>About</h2></div>
     <p>
       I am a Ph.D student (MS–Ph.D integrated) in Computer Science &amp; Engineering at
       <a href="https://dmis.korea.ac.kr/">Korea University (DMIS Lab)</a>, advised by Prof. Jaewoo Kang.
@@ -236,71 +325,71 @@
 
   <!-- ================= NEWS ================= -->
   <section>
-    <h2><span>News</span></h2>
+    <div class="sec-head"><span class="num">02</span><h2>News</h2></div>
     <div class="news" id="news">
       <div class="news-item">
-        <div class="date">Aug 2026</div>
-        <div class="what"><span class="ico">🎤</span>Invited talk on <a href="https://arxiv.org/abs/2607.08803">TheBioCollection</a> at the Multiomics Reading Group, Mila</div>
+        <div class="date">2026.08</div>
+        <div class="what">🎤 Invited talk on <a href="https://arxiv.org/abs/2607.08803">TheBioCollection</a> at the Multiomics Reading Group, Mila</div>
       </div>
       <div class="news-item">
-        <div class="date">Jul 2026</div>
-        <div class="what"><span class="ico">🎁</span><a href="https://arxiv.org/abs/2607.08803">TheBioCollection</a> released on arXiv</div>
+        <div class="date">2026.07</div>
+        <div class="what">🎁 <a href="https://arxiv.org/abs/2607.08803">TheBioCollection</a> released on arXiv</div>
       </div>
       <div class="news-item">
-        <div class="date">May 2026</div>
-        <div class="what"><span class="ico">🎁</span><a href="https://arxiv.org/abs/2605.07237">Teaching LMs to Think in Code</a> released on arXiv</div>
+        <div class="date">2026.05</div>
+        <div class="what">🎁 <a href="https://arxiv.org/abs/2605.07237">Teaching LMs to Think in Code</a> released on arXiv</div>
       </div>
       <div class="news-item">
-        <div class="date">Jan 2026</div>
-        <div class="what"><span class="ico">📣</span><a href="https://arxiv.org/abs/2601.09200">A.X K1 Technical Report</a> released on arXiv</div>
+        <div class="date">2026.01</div>
+        <div class="what">📣 <a href="https://arxiv.org/abs/2601.09200">A.X K1 Technical Report</a> released on arXiv</div>
       </div>
       <div class="news-item">
-        <div class="date">Dec 2025</div>
-        <div class="what"><span class="ico">🏅</span>Three Excellence Awards at CureBench @ NeurIPS 2025</div>
+        <div class="date">2025.12</div>
+        <div class="what">🏅 Three Excellence Awards at CureBench @ NeurIPS 2025</div>
       </div>
       <div class="news-item">
-        <div class="date">Aug 2025</div>
-        <div class="what"><span class="ico">📣</span>Paper accepted at EMNLP 2025 Findings</div>
+        <div class="date">2025.08</div>
+        <div class="what">📣 Paper accepted at EMNLP 2025 Findings</div>
       </div>
       <div class="news-item">
-        <div class="date">Jul 2025</div>
-        <div class="what"><span class="ico">🏆</span>1st place at ArchEHR-QA 2025 (BioNLP Workshop @ ACL 2025)</div>
+        <div class="date">2025.07</div>
+        <div class="what">🏆 1st place at ArchEHR-QA 2025 (BioNLP Workshop @ ACL 2025)</div>
       </div>
       <div class="news-item old">
-        <div class="date">Jun 2025</div>
-        <div class="what"><span class="ico">🏆</span>1st place at MedHopQA (BioCreative IX) @ IJCAI 2025</div>
+        <div class="date">2025.06</div>
+        <div class="what">🏆 1st place at MedHopQA (BioCreative IX) @ IJCAI 2025</div>
       </div>
       <div class="news-item old">
-        <div class="date">May 2025</div>
-        <div class="what"><span class="ico">📣</span><a href="https://www.nature.com/articles/s41746-025-01653-8">Meerkat</a> published in npj Digital Medicine</div>
+        <div class="date">2025.05</div>
+        <div class="what">📣 <a href="https://www.nature.com/articles/s41746-025-01653-8">Meerkat</a> published in npj Digital Medicine</div>
       </div>
       <div class="news-item old">
-        <div class="date">May 2025</div>
-        <div class="what"><span class="ico">📣</span>Paper accepted at ACL 2025</div>
+        <div class="date">2025.05</div>
+        <div class="what">📣 Paper accepted at ACL 2025</div>
       </div>
       <div class="news-item old">
-        <div class="date">Jan 2025</div>
-        <div class="what"><span class="ico">📣</span>Paper accepted at NAACL 2025</div>
+        <div class="date">2025.01</div>
+        <div class="what">📣 Paper accepted at NAACL 2025</div>
       </div>
       <div class="news-item old">
-        <div class="date">Sep 2024</div>
-        <div class="what"><span class="ico">📣</span>Paper accepted at EMNLP 2024</div>
+        <div class="date">2024.09</div>
+        <div class="what">📣 Paper accepted at EMNLP 2024</div>
       </div>
       <div class="news-item old">
-        <div class="date">Jun 2024</div>
-        <div class="what"><span class="ico">🏅</span>4th place at MEDIQA-CORR @ NAACL Clinical NLP 2024</div>
+        <div class="date">2024.06</div>
+        <div class="what">🏅 4th place at MEDIQA-CORR @ NAACL Clinical NLP 2024</div>
       </div>
       <div class="news-item old">
-        <div class="date">Sep 2023</div>
-        <div class="what"><span class="ico">🏅</span>2nd place at BioASQ 11B</div>
+        <div class="date">2023.09</div>
+        <div class="what">🏅 2nd place at BioASQ 11B</div>
       </div>
     </div>
-    <button class="btn-ghost" id="newsToggle">Show older entries ↓</button>
+    <button class="btn-ghost" id="newsToggle">show older ↓</button>
   </section>
 
   <!-- ================= PUBLICATIONS ================= -->
   <section>
-    <h2><span>Publications</span></h2>
+    <div class="sec-head"><span class="num">03</span><h2>Publications</h2></div>
 
     <div class="pub-tabs">
       <button class="active" data-mode="selected">Selected</button>
@@ -318,8 +407,8 @@
           <div class="authors">Hyunjin Seo*, <b>Hyeon Hwang</b>*, Gyubok Lee, Jay Shin, Jimin Park, Taesoo Kim, Sanghoon Lee, Hongjoon Ahn, Sungjun Han, Sangwon Jung <span class="eq">(*: equal contribution)</span></div>
           <div class="venue">arXiv preprint, 2026</div>
           <div class="chips">
-            <span class="chip kind">Tech Report</span>
-            <a class="chip" href="https://arxiv.org/abs/2607.08803">📄 Paper</a>
+            <span class="chip kind">tech report</span>
+            <a class="chip" href="https://arxiv.org/abs/2607.08803">paper</a>
           </div>
         </div>
       </div>
@@ -331,8 +420,8 @@
           <div class="authors"><b>Hyeon Hwang</b>, Jiwoo Lee, Jaewoo Kang</div>
           <div class="venue">arXiv preprint, 2026 · under review</div>
           <div class="chips">
-            <span class="chip kind">Preprint</span>
-            <a class="chip" href="https://arxiv.org/abs/2605.07237">📄 Paper</a>
+            <span class="chip kind">preprint</span>
+            <a class="chip" href="https://arxiv.org/abs/2605.07237">paper</a>
           </div>
         </div>
       </div>
@@ -344,8 +433,8 @@
           <div class="authors">SK Telecom</div>
           <div class="venue">arXiv preprint, 2026</div>
           <div class="chips">
-            <span class="chip kind">Tech Report</span>
-            <a class="chip" href="https://arxiv.org/abs/2601.09200">📄 Paper</a>
+            <span class="chip kind">tech report</span>
+            <a class="chip" href="https://arxiv.org/abs/2601.09200">paper</a>
           </div>
         </div>
       </div>
@@ -357,8 +446,8 @@
           <div class="authors"><b>Hyeon Hwang</b>, Yewon Cho, Chanwoong Yoon, Yein Park, Minju Song, Kyungjae Lee, Gangwoo Kim, Jaewoo Kang</div>
           <div class="venue">Findings of EMNLP 2025</div>
           <div class="chips">
-            <span class="chip kind">Conference</span>
-            <a class="chip" href="https://aclanthology.org/2025.findings-emnlp.1085/">📄 Paper</a>
+            <span class="chip kind">conference</span>
+            <a class="chip" href="https://aclanthology.org/2025.findings-emnlp.1085/">paper</a>
           </div>
         </div>
       </div>
@@ -370,9 +459,9 @@
           <div class="authors">Jungwoo Park, Taewhoo Lee, Chanwoong Yoon, <b>Hyeon Hwang</b>, Jaewoo Kang</div>
           <div class="venue">ACL 2025</div>
           <div class="chips">
-            <span class="chip kind">Conference</span>
-            <a class="chip" href="https://aclanthology.org/2025.acl-long.618/">📄 Paper</a>
-            <a class="chip" href="https://github.com/dmis-lab/Outlier-Safe-Pre-Training">&lt;/&gt; Code</a>
+            <span class="chip kind">conference</span>
+            <a class="chip" href="https://aclanthology.org/2025.acl-long.618/">paper</a>
+            <a class="chip" href="https://github.com/dmis-lab/Outlier-Safe-Pre-Training">code</a>
           </div>
         </div>
       </div>
@@ -382,10 +471,10 @@
         <div>
           <div class="ptitle">DMIS Lab at ArchEHR-QA 2025: Evidence-Grounded Answer Generation for EHR-based QA via a Multi-Agent Framework</div>
           <div class="authors"><b>Hyeon Hwang</b> et al.</div>
-          <div class="venue">24th BioNLP Workshop @ ACL 2025 · 🏆 1st place</div>
+          <div class="venue">24th BioNLP Workshop @ ACL 2025 · <span class="hl">🏆 1st place</span></div>
           <div class="chips">
-            <span class="chip kind">Workshop</span>
-            <a class="chip" href="https://aclanthology.org/2025.bionlp-share.15/">📄 Paper</a>
+            <span class="chip kind">workshop</span>
+            <a class="chip" href="https://aclanthology.org/2025.bionlp-share.15/">paper</a>
           </div>
         </div>
       </div>
@@ -395,10 +484,10 @@
         <div>
           <div class="ptitle">DMIS Lab at MedHopQA-2025: Ensemble Multi-Retrieval Methodologies with Reasoning Language Model Decision</div>
           <div class="authors">Jongmyung Jung, Hyeongsoon Hwang, Yein Park, Minju Song, Jaehoon Yoon, <b>Hyeon Hwang</b>, Sanghoon Lee, Jiwoong Sohn, Jaewoo Kang</div>
-          <div class="venue">BioCreative IX Challenge @ IJCAI 2025 · 🏆 1st place</div>
+          <div class="venue">BioCreative IX Challenge @ IJCAI 2025 · <span class="hl">🏆 1st place</span></div>
           <div class="chips">
-            <span class="chip kind">Workshop</span>
-            <a class="chip" href="https://zenodo.org/records/16875789">📄 Paper</a>
+            <span class="chip kind">workshop</span>
+            <a class="chip" href="https://zenodo.org/records/16875789">paper</a>
           </div>
         </div>
       </div>
@@ -410,9 +499,9 @@
           <div class="authors">Hyunjae Kim, <b>Hyeon Hwang</b>, Jiwoo Lee, Sihyeon Park, Dain Kim, Taewhoo Lee, Chanwoong Yoon, Jiwoong Sohn, Donghee Choi, Jaewoo Kang</div>
           <div class="venue">npj Digital Medicine 8, 240 (2025) · IF 15.1</div>
           <div class="chips">
-            <span class="chip kind">Journal</span>
-            <a class="chip" href="https://www.nature.com/articles/s41746-025-01653-8">📄 Paper</a>
-            <a class="chip" href="https://huggingface.co/collections/dmis-lab/meerkat-6710b7ae0258fc540c475eec">🤗 Hugging Face</a>
+            <span class="chip kind">journal</span>
+            <a class="chip" href="https://www.nature.com/articles/s41746-025-01653-8">paper</a>
+            <a class="chip" href="https://huggingface.co/collections/dmis-lab/meerkat-6710b7ae0258fc540c475eec">hugging face</a>
           </div>
         </div>
       </div>
@@ -424,9 +513,9 @@
           <div class="authors">Jiwoong Sohn, Yein Park, Chanwoong Yoon, Sihyeon Park, <b>Hyeon Hwang</b>, Mujeen Sung, Hyunjae Kim, Jaewoo Kang</div>
           <div class="venue">NAACL 2025</div>
           <div class="chips">
-            <span class="chip kind">Conference</span>
-            <a class="chip" href="https://aclanthology.org/2025.naacl-long.635/">📄 Paper</a>
-            <a class="chip" href="https://github.com/dmis-lab/RAG2">&lt;/&gt; Code</a>
+            <span class="chip kind">conference</span>
+            <a class="chip" href="https://aclanthology.org/2025.naacl-long.635/">paper</a>
+            <a class="chip" href="https://github.com/dmis-lab/RAG2">code</a>
           </div>
         </div>
       </div>
@@ -438,9 +527,9 @@
           <div class="authors">Chanwoong Yoon, Taewhoo Lee, <b>Hyeon Hwang</b>, Minbyul Jeong, Jaewoo Kang</div>
           <div class="venue">EMNLP 2024</div>
           <div class="chips">
-            <span class="chip kind">Conference</span>
-            <a class="chip" href="https://aclanthology.org/2024.emnlp-main.1194/">📄 Paper</a>
-            <a class="chip" href="https://github.com/dmis-lab/compact">&lt;/&gt; Code</a>
+            <span class="chip kind">conference</span>
+            <a class="chip" href="https://aclanthology.org/2024.emnlp-main.1194/">paper</a>
+            <a class="chip" href="https://github.com/dmis-lab/compact">code</a>
           </div>
         </div>
       </div>
@@ -452,8 +541,8 @@
           <div class="authors"><b>Hyeon Hwang</b>, Taewhoo Lee, Hyunjae Kim, Jaewoo Kang</div>
           <div class="venue">6th Clinical NLP Workshop @ NAACL 2024</div>
           <div class="chips">
-            <span class="chip kind">Workshop</span>
-            <a class="chip" href="https://aclanthology.org/2024.clinicalnlp-1.51/">📄 Paper</a>
+            <span class="chip kind">workshop</span>
+            <a class="chip" href="https://aclanthology.org/2024.clinicalnlp-1.51/">paper</a>
           </div>
         </div>
       </div>
@@ -465,9 +554,9 @@
           <div class="authors">Minbyul Jeong, <b>Hyeon Hwang</b>, Chanwoong Yoon, Taewhoo Lee, Jaewoo Kang</div>
           <div class="venue">arXiv preprint, 2024 · under review</div>
           <div class="chips">
-            <span class="chip kind">Preprint</span>
-            <a class="chip" href="https://arxiv.org/abs/2405.12701">📄 Paper</a>
-            <a class="chip" href="https://github.com/dmis-lab/OLAPH">&lt;/&gt; Code</a>
+            <span class="chip kind">preprint</span>
+            <a class="chip" href="https://arxiv.org/abs/2405.12701">paper</a>
+            <a class="chip" href="https://github.com/dmis-lab/OLAPH">code</a>
           </div>
         </div>
       </div>
@@ -477,10 +566,10 @@
         <div>
           <div class="ptitle">Exploring Approaches to Answer Biomedical Questions: From Pre-processing to GPT-4</div>
           <div class="authors">Hyunjae Kim, <b>Hyeon Hwang</b>, Chaeeun Lee, Minju Seo, Wonjin Yoon, Jaewoo Kang</div>
-          <div class="venue">CLEF 2023 · 🏅 BioASQ 11B 2nd place</div>
+          <div class="venue">CLEF 2023 · <span class="hl">🥈 BioASQ 11B 2nd place</span></div>
           <div class="chips">
-            <span class="chip kind">Workshop</span>
-            <a class="chip" href="https://ceur-ws.org/Vol-3497/paper-011.pdf">📄 Paper</a>
+            <span class="chip kind">workshop</span>
+            <a class="chip" href="https://ceur-ws.org/Vol-3497/paper-011.pdf">paper</a>
           </div>
         </div>
       </div>
@@ -490,59 +579,59 @@
 
   <!-- ================= EXPERIENCE ================= -->
   <section>
-    <h2><span>Experience</span></h2>
+    <div class="sec-head"><span class="num">04</span><h2>Experience</h2></div>
     <div class="rows">
       <div class="row">
         <div>
           <div class="title">Trillion Labs · Research Intern</div>
           <div class="sub">LLM mid-training to enhance biological capability (<a href="https://arxiv.org/abs/2607.08803">TheBioCollection</a>)</div>
         </div>
-        <div class="date">Apr 2026 – Jul 2026</div>
+        <div class="date">2026.04 – 2026.07</div>
       </div>
       <div class="row">
         <div>
           <div class="title">SK Telecom · Research Intern</div>
           <div class="sub">LLM post-training to enhance scientific reasoning (<a href="https://arxiv.org/abs/2601.09200">A.X K1</a>)</div>
         </div>
-        <div class="date">Oct 2025 – Dec 2025</div>
+        <div class="date">2025.10 – 2025.12</div>
       </div>
       <div class="row">
         <div>
           <div class="title">NVIDIA DLI University Ambassador</div>
           <div class="sub">Certified Instructor — NVIDIA DLI “Efficient LLM Customization”</div>
         </div>
-        <div class="date">Apr 2025 – Present</div>
+        <div class="date">2025.04 – present</div>
       </div>
     </div>
   </section>
 
   <!-- ================= EDUCATION ================= -->
   <section>
-    <h2><span>Education</span></h2>
+    <div class="sec-head"><span class="num">05</span><h2>Education</h2></div>
     <div class="rows">
       <div class="row">
         <div>
           <div class="title">Korea University</div>
           <div class="sub">Ph.D (MS Integrated) Student, Computer Science &amp; Engineering · Advisor: Prof. Jaewoo Kang</div>
         </div>
-        <div class="date">Mar 2023 – Present</div>
+        <div class="date">2023.03 – present</div>
       </div>
       <div class="row">
         <div>
           <div class="title">Sogang University</div>
           <div class="sub">B.S in Life Science &amp; Artificial Intelligence (Double Major)</div>
         </div>
-        <div class="date">Mar 2016 – Aug 2022</div>
+        <div class="date">2016.03 – 2022.08</div>
       </div>
     </div>
   </section>
 
   <!-- ================= AWARDS ================= -->
   <section>
-    <h2><span>Awards &amp; Honors</span></h2>
+    <div class="sec-head"><span class="num">06</span><h2>Awards &amp; Honors</h2></div>
     <div class="awards">
       <div class="award">
-        <span class="medal">Excellence</span>
+        <span class="medal">excellence</span>
         <div>
           <div class="atitle">CureBench @ NeurIPS 2025</div>
           <div class="adesc">Three Excellence Awards among the four evaluation categories</div>
@@ -550,7 +639,7 @@
         <span class="ayear">2025</span>
       </div>
       <div class="award">
-        <span class="medal">🏆 1st place</span>
+        <span class="medal">🏆 1st</span>
         <div>
           <div class="atitle">ArchEHR-QA 2025 @ ACL BioNLP Workshop <a href="https://aclanthology.org/2025.bionlp-share.15/">[paper]</a></div>
           <div class="adesc">Answering patient questions using clinical evidence from EHRs</div>
@@ -558,7 +647,7 @@
         <span class="ayear">2025</span>
       </div>
       <div class="award">
-        <span class="medal">🏆 1st place</span>
+        <span class="medal">🏆 1st</span>
         <div>
           <div class="atitle">MedHopQA (BioCreative IX) @ IJCAI 2025 <a href="https://zenodo.org/records/16875789">[paper]</a></div>
           <div class="adesc">Complex multi-hop medical question answering</div>
@@ -566,7 +655,7 @@
         <span class="ayear">2025</span>
       </div>
       <div class="award">
-        <span class="medal">4th place</span>
+        <span class="medal">4th</span>
         <div>
           <div class="atitle">MEDIQA-CORR @ NAACL Clinical NLP 2024 <a href="https://aclanthology.org/2024.clinicalnlp-1.51/">[paper]</a></div>
           <div class="adesc">Medical error correction in clinical notes</div>
@@ -574,7 +663,7 @@
         <span class="ayear">2024</span>
       </div>
       <div class="award">
-        <span class="medal">🥈 2nd place</span>
+        <span class="medal">🥈 2nd</span>
         <div>
           <div class="atitle">BioASQ 11B <a href="https://ceur-ws.org/Vol-3497/paper-011.pdf">[paper]</a></div>
           <div class="adesc">Large-scale biomedical semantic indexing and question answering</div>
@@ -582,7 +671,7 @@
         <span class="ayear">2023</span>
       </div>
       <div class="award">
-        <span class="medal">🏆 1st place</span>
+        <span class="medal">🏆 1st</span>
         <div>
           <div class="atitle">SKT FlyAI Challenger</div>
           <div class="adesc">AI service development hackathon hosted by SK Telecom</div>
@@ -594,14 +683,14 @@
 
   <!-- ================= ACADEMIC ACTIVITIES ================= -->
   <section>
-    <h2><span>Academic Activities</span></h2>
+    <div class="sec-head"><span class="num">07</span><h2>Academic Activities</h2></div>
     <div class="rows">
       <div class="row">
         <div>
           <div class="title">Invited Talk — <a href="https://multiomics-reading-group.github.io/#topics">Multiomics Reading Group</a> at <a href="https://mila.quebec/en/">Mila</a></div>
           <div class="sub">“TheBioCollection: Unified Pre-Training Scale LLM Corpus for Biology”</div>
         </div>
-        <div class="date">Aug 19, 2026</div>
+        <div class="date">2026.08.19</div>
       </div>
       <div class="row">
         <div>
@@ -614,7 +703,8 @@
   </section>
 
   <footer>
-    © 2026 Hyeon Hwang · Last updated August 2026
+    <span>© 2026 Hyeon Hwang</span>
+    <span>last updated 2026.08</span>
   </footer>
 
 </div>
@@ -625,7 +715,7 @@
   const newsToggle = document.getElementById('newsToggle');
   newsToggle.addEventListener('click', () => {
     const expanded = news.classList.toggle('expanded');
-    newsToggle.textContent = expanded ? 'Show fewer entries ↑' : 'Show older entries ↓';
+    newsToggle.textContent = expanded ? 'show fewer ↑' : 'show older ↓';
   });
 
   // Publications: Selected / Full tabs
