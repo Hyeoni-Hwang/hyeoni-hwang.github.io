@@ -7,39 +7,39 @@
   <meta name="description" content="Hyeon Hwang — AI Researcher. Ph.D student at Korea University working on large language models for biomedical and scientific domains.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #faf7f1;
-      --bg-deep: #f3eee4;
-      --card: #fffdf9;
-      --text: #232019;
-      --muted: #6b655a;
-      --faint: #98917f;
-      --accent: #175e54;        /* deep pine green */
+      --bg: #ffffff;
+      --bg-deep: #f6f7f8;
+      --card: #ffffff;
+      --text: #1f2328;
+      --muted: #59616b;
+      --faint: #8b939e;
+      --accent: #15665a;        /* deep pine green */
       --accent-ink: #0e4a42;
-      --accent-soft: #e4efe9;
+      --accent-soft: #e7f2ee;
       --amber: #b45309;
-      --amber-soft: #f6ead8;
-      --line: #e6dfd1;
-      --shadow: #d9d0bd;
+      --amber-soft: #faeedd;
+      --line: #e6e8eb;
+      --shadow: rgba(31, 35, 40, 0.07);
       color-scheme: light dark;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #191713;
-        --bg-deep: #14120f;
-        --card: #201d18;
-        --text: #ece7dc;
-        --muted: #aca596;
-        --faint: #7d766a;
+        --bg: #131518;
+        --bg-deep: #0f1113;
+        --card: #1a1d21;
+        --text: #e8eaed;
+        --muted: #a3abb5;
+        --faint: #737b86;
         --accent: #6fc9b6;
         --accent-ink: #93d9c9;
-        --accent-soft: #1d2a26;
+        --accent-soft: #1c2a27;
         --amber: #e3a35f;
         --amber-soft: #322718;
-        --line: #35302a;
-        --shadow: #0d0c0a;
+        --line: #2b2f34;
+        --shadow: rgba(0, 0, 0, 0.35);
       }
     }
     * { box-sizing: border-box; }
@@ -55,8 +55,6 @@
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; text-underline-offset: 3px; }
-    .serif { font-family: "Fraunces", Georgia, serif; }
-    .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
     .wrap { max-width: 880px; margin: 0 auto; padding: 0 26px 100px; }
 
     /* ---------- Hero ---------- */
@@ -69,19 +67,17 @@
       border-bottom: 1px solid var(--line);
     }
     .hero h1 {
-      font-family: "Fraunces", Georgia, serif;
-      font-size: 52px;
-      font-weight: 600;
+      font-size: 46px;
+      font-weight: 800;
       letter-spacing: -0.02em;
       line-height: 1.08;
       margin: 0 0 10px;
     }
-    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero h1 em { font-style: normal; color: var(--accent); }
     .hero .tagline { color: var(--muted); margin: 0 0 22px; font-size: 16.5px; }
     .hero .links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
     .hero .links a {
-      font-family: "JetBrains Mono", ui-monospace, monospace;
-      font-size: 13px; font-weight: 500;
+      font-size: 14px; font-weight: 600;
       color: var(--text);
       border-bottom: 1.5px solid var(--amber);
       padding-bottom: 1px;
@@ -90,14 +86,12 @@
     .avatar {
       width: 148px; height: 148px;
       border-radius: 14px;
-      transform: rotate(2deg);
       background: var(--accent-soft); color: var(--accent);
       display: flex; align-items: center; justify-content: center;
-      font-family: "Fraunces", Georgia, serif;
-      font-size: 44px; font-weight: 700;
+      font-size: 42px; font-weight: 800;
       overflow: hidden;
       border: 1px solid var(--line);
-      box-shadow: 6px 6px 0 var(--shadow);
+      box-shadow: 0 2px 8px var(--shadow);
     }
     .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -108,13 +102,11 @@
       margin-bottom: 34px;
     }
     .sec-head .num {
-      font-family: "JetBrains Mono", ui-monospace, monospace;
-      font-size: 13px; color: var(--amber); font-weight: 500;
+      font-size: 13px; color: var(--amber); font-weight: 700;
       letter-spacing: 0.05em;
     }
     .sec-head h2 {
-      font-family: "Fraunces", Georgia, serif;
-      font-size: 27px; font-weight: 600; font-style: italic;
+      font-size: 25px; font-weight: 800;
       letter-spacing: -0.01em;
       margin: 0;
     }
@@ -134,8 +126,7 @@
     }
     .news-item:last-of-type { border-bottom: none; }
     .news-item .date {
-      font-family: "JetBrains Mono", ui-monospace, monospace;
-      font-size: 12px; font-weight: 500;
+      font-size: 12.5px; font-weight: 600;
       color: var(--accent);
       background: var(--accent-soft);
       border-radius: 4px;
@@ -148,15 +139,14 @@
     .news.expanded .news-item.old { display: grid; }
     .btn-ghost {
       display: block; margin: 26px 0 0;
-      padding: 8px 20px; border-radius: 6px;
+      padding: 8px 20px; border-radius: 8px;
       border: 1px solid var(--line); background: var(--card);
       color: var(--muted); font-size: 13.5px; font-weight: 600;
-      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-family: inherit;
       cursor: pointer;
-      box-shadow: 3px 3px 0 var(--shadow);
+      box-shadow: 0 1px 3px var(--shadow);
     }
     .btn-ghost:hover { color: var(--accent); border-color: var(--accent); }
-    .btn-ghost:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--shadow); }
 
     /* ---------- Publications ---------- */
     .pub-tabs {
@@ -166,7 +156,7 @@
       border-radius: 8px;
       overflow: hidden;
       background: var(--card);
-      box-shadow: 3px 3px 0 var(--shadow);
+      box-shadow: 0 1px 3px var(--shadow);
     }
     .pub-tabs button {
       padding: 8px 26px;
@@ -187,7 +177,7 @@
       border-radius: 12px;
       padding: 22px;
       margin-bottom: 18px;
-      box-shadow: 4px 4px 0 var(--shadow);
+      box-shadow: 0 1px 4px var(--shadow);
     }
     .thumb {
       width: 168px; height: 112px;
@@ -197,8 +187,7 @@
       background: var(--bg-deep);
       display: flex; align-items: center; justify-content: center;
       color: var(--faint);
-      font-family: "Fraunces", Georgia, serif;
-      font-style: italic; font-weight: 600; font-size: 14px;
+      font-weight: 600; font-size: 13.5px;
       text-align: center; padding: 8px;
     }
     .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: none; }
@@ -206,8 +195,7 @@
     .thumb.hasimg .ph { display: none; }
 
     .pub .ptitle {
-      font-family: "Fraunces", Georgia, serif;
-      font-weight: 600; font-size: 17.5px; line-height: 1.4;
+      font-weight: 700; font-size: 16.5px; line-height: 1.45;
       margin-bottom: 6px; letter-spacing: -0.005em;
     }
     .pub .authors { color: var(--muted); font-size: 13.5px; margin-bottom: 2px; }
@@ -218,9 +206,8 @@
     .pub .chips { display: flex; flex-wrap: wrap; gap: 8px; }
     .chip {
       display: inline-flex; align-items: center; gap: 5px;
-      font-family: "JetBrains Mono", ui-monospace, monospace;
-      font-size: 11.5px; font-weight: 500;
-      padding: 3px 10px; border-radius: 4px;
+      font-size: 12px; font-weight: 600;
+      padding: 3px 10px; border-radius: 5px;
       border: 1px solid var(--line); color: var(--muted); background: var(--bg);
     }
     a.chip { color: var(--accent-ink); border-color: var(--accent-soft); background: var(--accent-soft); }
@@ -237,8 +224,7 @@
     .row .title { font-weight: 700; font-size: 15.5px; }
     .row .sub { color: var(--muted); font-size: 14px; }
     .row .date {
-      font-family: "JetBrains Mono", ui-monospace, monospace;
-      color: var(--faint); font-size: 12.5px;
+      color: var(--faint); font-size: 13px;
       white-space: nowrap; padding-top: 4px; flex-shrink: 0;
     }
 
@@ -251,17 +237,15 @@
     .award:last-of-type { border-bottom: none; }
     .medal {
       flex-shrink: 0;
-      font-family: "JetBrains Mono", ui-monospace, monospace;
-      font-size: 11.5px; font-weight: 500;
+      font-size: 12px; font-weight: 600;
       color: var(--amber); background: var(--amber-soft);
-      border-radius: 4px; padding: 3px 10px; margin-top: 3px;
+      border-radius: 5px; padding: 3px 10px; margin-top: 3px;
       white-space: nowrap;
     }
     .award .atitle { font-weight: 700; }
     .award .adesc { color: var(--muted); font-size: 14px; }
     .award .ayear {
-      font-family: "JetBrains Mono", ui-monospace, monospace;
-      color: var(--faint); font-size: 12.5px;
+      color: var(--faint); font-size: 13px;
       margin-left: auto; padding-top: 5px; flex-shrink: 0;
     }
 
