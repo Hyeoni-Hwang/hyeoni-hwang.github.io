@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hyeon Hwang</title>
+  <meta name="description" content="Hyeon Hwang — AI Researcher. Ph.D student at Korea University working on large language models for biomedical and scientific domains.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdfdfc;
+      --surface: #f4f4f2;
+      --text: #1b1b1a;
+      --muted: #5f5e5a;
+      --faint: #8a8984;
+      --accent: #8b1e2d;       /* Korea University crimson */
+      --accent-soft: #f7eaec;
+      --line: #e4e3df;
+      --link: #8b1e2d;
+      color-scheme: light dark;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-force-light]) {
+        --bg: #161615;
+        --surface: #201f1e;
+        --text: #eceae6;
+        --muted: #a5a39d;
+        --faint: #77756f;
+        --accent: #e0707e;
+        --accent-soft: #342225;
+        --line: #302f2d;
+        --link: #e0707e;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15.5px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .avatar {
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 34px;
+      font-weight: 700;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    h1 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 34px;
+      font-weight: 700;
+      margin: 0 0 2px;
+      letter-spacing: -0.01em;
+    }
+    .tagline { color: var(--muted); margin: 0 0 10px; }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .links span.sep { color: var(--line); }
+
+    /* ---------- Sections ---------- */
+    section { margin-top: 44px; }
+    h2 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 21px;
+      font-weight: 700;
+      margin: 0 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+      letter-spacing: -0.01em;
+    }
+    .about p { margin: 0 0 12px; }
+
+    /* ---------- Timeline rows (education / experience) ---------- */
+    .row {
+      display: flex;
+      gap: 16px;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .row .main { min-width: 0; }
+    .row .title { font-weight: 600; }
+    .row .sub { color: var(--muted); font-size: 14px; }
+    .row .date {
+      color: var(--faint);
+      font-size: 13.5px;
+      white-space: nowrap;
+      padding-top: 2px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* ---------- Publications ---------- */
+    .pubgroup { margin-bottom: 8px; }
+    h3 {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--faint);
+      margin: 24px 0 12px;
+    }
+    .pub {
+      margin-bottom: 16px;
+      padding-left: 14px;
+      border-left: 2px solid var(--line);
+    }
+    .pub:hover { border-left-color: var(--accent); }
+    .pub .ptitle { font-weight: 600; }
+    .pub .authors { color: var(--muted); font-size: 14px; }
+    .pub .authors b { color: var(--text); font-weight: 600; }
+    .pub .venue { font-size: 14px; color: var(--muted); font-style: italic; }
+    .pub .tags { margin-top: 3px; font-size: 13px; }
+    .pub .tags a { margin-right: 10px; font-weight: 500; }
+
+    /* ---------- Awards ---------- */
+    .award { display: flex; gap: 14px; margin-bottom: 13px; }
+    .medal {
+      flex-shrink: 0;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border-radius: 999px;
+      padding: 2px 10px;
+      height: fit-content;
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+    .award .atitle { font-weight: 600; }
+    .award .adesc { color: var(--muted); font-size: 14px; }
+    .award .ayear { color: var(--faint); font-size: 13.5px; margin-left: auto; padding-top: 2px; flex-shrink: 0; }
+
+    footer {
+      margin-top: 64px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: var(--faint);
+      font-size: 13px;
+    }
+
+    @media (max-width: 560px) {
+      .wrap { padding-top: 40px; }
+      header { gap: 20px; }
+      .avatar { width: 84px; height: 84px; font-size: 26px; }
+      h1 { font-size: 28px; }
+      .row { flex-direction: column; gap: 0; }
+      .row .date { text-align: left; padding-top: 0; }
+      .award { flex-wrap: wrap; }
+      .award .ayear { margin-left: 0; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <!-- To use a photo: put photo.jpg next to index.html and replace the line
+         below with  <div class="avatar"><img src="photo.jpg" alt="Hyeon Hwang"></div> -->
+    <div class="avatar">HH</div>
+    <div>
+      <h1>Hyeon Hwang</h1>
+      <p class="tagline">AI Researcher · Ph.D Student, Korea University</p>
+      <nav class="links">
+        <a href="mailto:hyeon-hwang@korea.ac.kr">Email</a>
+        <span class="sep">·</span>
+        <a href="https://github.com/Hyeoni-Hwang">GitHub</a>
+        <span class="sep">·</span>
+        <a href="#">Google Scholar</a> <!-- TODO: paste your Scholar profile URL -->
+        <span class="sep">·</span>
+        <a href="Hyeon_Hwang_CV.pdf">CV</a> <!-- TODO: add CV pdf to the repo, or remove -->
+      </nav>
+    </div>
+  </header>
+
+  <section class="about">
+    <h2>About</h2>
+    <p>
+      I am a Ph.D student (MS–Ph.D integrated) in Computer Science &amp; Engineering at
+      <a href="https://dmis.korea.ac.kr/">Korea University</a>, advised by Prof. Jaewoo Kang.
+      My research focuses on large language models for biomedical and scientific domains —
+      including pre-/mid-training corpora for biology, reasoning-focused post-training,
+      and evaluating the reasoning steps of LLMs.
+    </p>
+    <p>
+      Recently, I have worked on LLM mid-training for biological capability at Trillion Labs
+      and LLM post-training for scientific reasoning at SK Telecom.
+    </p>
+  </section>
+
+  <section>
+    <h2>News</h2>
+    <div class="row">
+      <div class="main">Invited talk at the Multiomics Reading Group, <b>Mila</b> — <i>TheBioCollection</i></div>
+      <div class="date">Aug 2026</div>
+    </div>
+    <div class="row">
+      <div class="main">One paper accepted to <b>EMNLP 2025</b> Findings</div>
+      <div class="date">Aug 2025</div>
+    </div>
+    <div class="row">
+      <div class="main">Our team won <b>1st place</b> at ArchEHR-QA 2025 (BioNLP Workshop @ ACL 2025)</div>
+      <div class="date">2025</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <div class="row">
+      <div class="main">
+        <div class="title">Trillion Labs — Research Intern</div>
+        <div class="sub">LLM mid-training to enhance biological capability</div>
+      </div>
+      <div class="date">Apr 2026 – Jul 2026</div>
+    </div>
+    <div class="row">
+      <div class="main">
+        <div class="title">SK Telecom — Research Intern</div>
+        <div class="sub">LLM post-training to enhance scientific reasoning</div>
+      </div>
+      <div class="date">Oct 2025 – Dec 2025</div>
+    </div>
+    <div class="row">
+      <div class="main">
+        <div class="title">NVIDIA DLI University Ambassador</div>
+        <div class="sub">Certified Instructor — NVIDIA DLI “Efficient LLM Customization”</div>
+      </div>
+      <div class="date">Apr 2025 – Present</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="row">
+      <div class="main">
+        <div class="title">Korea University</div>
+        <div class="sub">Ph.D (MS Integrated) Student, Computer Science &amp; Engineering · Advisor: Prof. Jaewoo Kang</div>
+      </div>
+      <div class="date">Mar 2023 – Present</div>
+    </div>
+    <div class="row">
+      <div class="main">
+        <div class="title">Sogang University</div>
+        <div class="sub">B.S in Life Science &amp; Artificial Intelligence (Double Major)</div>
+      </div>
+      <div class="date">Mar 2016 – Aug 2022</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Publications</h2>
+
+    <div class="pubgroup">
+      <h3>Conference &amp; Journal</h3>
+
+      <div class="pub">
+        <div class="ptitle">Assessing LLM Reasoning Steps via Principal Knowledge Grounding</div>
+        <div class="authors"><b>Hyeon Hwang</b>, Yewon Cho, Chanwoong Yoon, Yein Park, Minju Song, Kyungjae Lee, Gangwoo Kim, Jaewoo Kang</div>
+        <div class="venue">Findings of EMNLP 2025</div>
+        <div class="tags"><a href="#">Paper</a></div>
+      </div>
+
+      <div class="pub">
+        <div class="ptitle">Small Language Models Learn Enhanced Reasoning Skills from Medical Textbooks</div>
+        <div class="authors">Hyunjae Kim, <b>Hyeon Hwang</b>, Jiwoo Lee, Sihyeon Park, Dain Kim, Taewhoo Lee, Chanwoong Yoon, Jiwoong Sohn, Donghee Choi, Jaewoo Kang</div>
+        <div class="venue">npj Digital Medicine 8, 240 (2025)</div>
+        <div class="tags"><a href="#">Paper</a> <a href="#">Hugging Face</a></div>
+      </div>
+
+      <div class="pub">
+        <div class="ptitle">Outlier-Safe Pre-Training for Robust 4-Bit Quantization of Large Language Models</div>
+        <div class="authors">Jungwoo Park, Taewhoo Lee, Chanwoong Yoon, <b>Hyeon Hwang</b>, Jaewoo Kang</div>
+        <div class="venue">ACL 2025</div>
+        <div class="tags"><a href="#">Paper</a> <a href="#">GitHub</a></div>
+      </div>
+
+      <div class="pub">
+        <div class="ptitle">Rationale-Guided Retrieval Augmented Generation for Medical Question Answering</div>
+        <div class="authors">Jiwoong Sohn, Yein Park, Chanwoong Yoon, Sihyeon Park, <b>Hyeon Hwang</b>, Mujeen Sung, Hyunjae Kim, Jaewoo Kang</div>
+        <div class="venue">NAACL 2025</div>
+        <div class="tags"><a href="#">Paper</a> <a href="#">GitHub</a></div>
+      </div>
+
+      <div class="pub">
+        <div class="ptitle">CompAct: Compressing Retrieved Documents Actively for Question Answering</div>
+        <div class="authors">Chanwoong Yoon, Taewhoo Lee, <b>Hyeon Hwang</b>, Minbyul Jeong, Jaewoo Kang</div>
+        <div class="venue">EMNLP 2024</div>
+        <div class="tags"><a href="#">Paper</a> <a href="#">GitHub</a></div>
+      </div>
+    </div>
+
+    <div class="pubgroup">
+      <h3>Preprints &amp; Technical Reports</h3>
+
+      <div class="pub">
+        <div class="ptitle">Teaching Language Models to Think in Code</div>
+        <div class="authors"><b>Hyeon Hwang</b>, Jiwoo Lee, Jaewoo Kang</div>
+        <div class="venue">arXiv preprint, 2026 (under review)</div>
+        <div class="tags"><a href="#">Paper</a></div>
+      </div>
+
+      <div class="pub">
+        <div class="ptitle">TheBioCollection: Unified Pre-Training Scale LLM Corpus for Biology</div>
+        <div class="authors">Hyunjin Seo*, <b>Hyeon Hwang</b>*, Gyubok Lee, Jay Shin, Jimin Park, Taesoo Kim, Sanghoon Lee, Hongjoon Ahn, Sungjun Han, Sangwon Jung</div>
+        <div class="venue">arXiv preprint, 2026</div>
+        <div class="tags"><a href="#">Paper</a></div>
+      </div>
+
+      <div class="pub">
+        <div class="ptitle">A.X K1 Technical Report</div>
+        <div class="authors">SK Telecom</div>
+        <div class="venue">arXiv preprint, 2026</div>
+        <div class="tags"><a href="#">Paper</a></div>
+      </div>
+
+      <div class="pub">
+        <div class="ptitle">OLAPH: Improving Factuality in Biomedical Long-form Question Answering</div>
+        <div class="authors">Minbyul Jeong, <b>Hyeon Hwang</b>, Chanwoong Yoon, Taewhoo Lee, Jaewoo Kang</div>
+        <div class="venue">arXiv preprint, 2024 (under review)</div>
+        <div class="tags"><a href="#">Paper</a> <a href="#">GitHub</a></div>
+      </div>
+    </div>
+
+    <div class="pubgroup">
+      <h3>Workshop &amp; Shared Task</h3>
+
+      <div class="pub">
+        <div class="ptitle">DMIS Lab at ArchEHR-QA 2025: Evidence-Grounded Answer Generation for EHR-based QA via a Multi-Agent Framework</div>
+        <div class="authors"><b>Hyeon Hwang</b> et al.</div>
+        <div class="venue">24th BioNLP Workshop @ ACL 2025</div>
+        <div class="tags"><a href="#">Paper</a></div>
+      </div>
+
+      <div class="pub">
+        <div class="ptitle">DMIS Lab at MedHopQA-2025: Ensemble Multi-Retrieval Methodologies with Reasoning Language Model Decision</div>
+        <div class="authors">Jongmyung Jung, Hyeongsoon Hwang, Yein Park, Minju Song, Jaehoon Yoon, <b>Hyeon Hwang</b>, Sanghoon Lee, Jiwoong Sohn, Jaewoo Kang</div>
+        <div class="venue">BioCreative IX Challenge @ IJCAI 2025</div>
+        <div class="tags"><a href="#">Paper</a></div>
+      </div>
+
+      <div class="pub">
+        <div class="ptitle">Exploring the Reasoning Capabilities of Small Language Models in Medical Error Correction</div>
+        <div class="authors"><b>Hyeon Hwang</b>, Taewhoo Lee, Hyunjae Kim, Jaewoo Kang</div>
+        <div class="venue">6th Clinical NLP Workshop @ NAACL 2024</div>
+        <div class="tags"><a href="#">Paper</a></div>
+      </div>
+
+      <div class="pub">
+        <div class="ptitle">Exploring Approaches to Answer Biomedical Questions: From Pre-processing to GPT-4</div>
+        <div class="authors">Hyunjae Kim, <b>Hyeon Hwang</b>, Chaeeun Lee, Minju Seo, Wonjin Yoon, Jaewoo Kang</div>
+        <div class="venue">CLEF 2023</div>
+        <div class="tags"><a href="#">Paper</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Awards &amp; Honors</h2>
+
+    <div class="award">
+      <span class="medal">Excellence</span>
+      <div>
+        <div class="atitle">CureBench @ NeurIPS 2025</div>
+        <div class="adesc">Three Excellence Awards among the four evaluation categories</div>
+      </div>
+      <span class="ayear">2025</span>
+    </div>
+
+    <div class="award">
+      <span class="medal">1st place</span>
+      <div>
+        <div class="atitle">ArchEHR-QA 2025 @ ACL BioNLP Workshop</div>
+        <div class="adesc">Answering patient questions using clinical evidence from EHRs</div>
+      </div>
+      <span class="ayear">2025</span>
+    </div>
+
+    <div class="award">
+      <span class="medal">1st place</span>
+      <div>
+        <div class="atitle">MedHopQA (BioCreative IX) @ IJCAI 2025</div>
+        <div class="adesc">Complex multi-hop medical question answering</div>
+      </div>
+      <span class="ayear">2025</span>
+    </div>
+
+    <div class="award">
+      <span class="medal">4th place</span>
+      <div>
+        <div class="atitle">MEDIQA-CORR @ NAACL Clinical NLP 2024</div>
+        <div class="adesc">Medical error correction in clinical notes</div>
+      </div>
+      <span class="ayear">2024</span>
+    </div>
+
+    <div class="award">
+      <span class="medal">2nd place</span>
+      <div>
+        <div class="atitle">BioASQ 11B</div>
+        <div class="adesc">Large-scale biomedical semantic indexing and question answering</div>
+      </div>
+      <span class="ayear">2023</span>
+    </div>
+
+    <div class="award">
+      <span class="medal">1st place</span>
+      <div>
+        <div class="atitle">SKT FlyAI Challenger</div>
+        <div class="adesc">AI service development hackathon hosted by SK Telecom</div>
+      </div>
+      <span class="ayear">2022</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Academic Activities</h2>
+    <div class="row">
+      <div class="main">
+        <div class="title">Invited Talk — Multiomics Reading Group at Mila</div>
+        <div class="sub">“TheBioCollection: Unified Pre-Training Scale LLM Corpus for Biology”</div>
+      </div>
+      <div class="date">Aug 19, 2026</div>
+    </div>
+    <div class="row">
+      <div class="main">
+        <div class="title">Conference Reviewer</div>
+        <div class="sub">ACL 2026, EMNLP 2026, NeurIPS 2026</div>
+      </div>
+      <div class="date">2026</div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Hyeon Hwang · Last updated August 2026
+  </footer>
+
+</div>
+</body>
+</html>
